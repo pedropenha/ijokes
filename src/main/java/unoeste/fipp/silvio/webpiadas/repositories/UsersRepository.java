@@ -10,4 +10,6 @@ import java.util.List;
 
 public interface UsersRepository extends JpaRepository<Users, Long> {
 
+    @Query(value="SELECT * FROM user u WHERE u.nome LIKE :filter%",nativeQuery=true)
+    public List<Users> findAllWithFilter(@Param("filter") String filter);
 }
