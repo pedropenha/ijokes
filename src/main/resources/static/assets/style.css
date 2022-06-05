@@ -6,3 +6,7 @@
 body{
     background-color: #202020;
 }
+
+.d-none{
+    display: none;
+}
