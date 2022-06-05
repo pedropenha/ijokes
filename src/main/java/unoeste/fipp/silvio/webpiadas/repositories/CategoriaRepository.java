@@ -12,4 +12,5 @@ public interface CategoriaRepository extends JpaRepository<Categoria,Long>{
 
     @Query(value="SELECT * FROM categoria c WHERE c.cat_nome LIKE :filter%",nativeQuery=true)
     public List<Categoria> findAllWithFilter(@Param("filter") String filter);
+
 }

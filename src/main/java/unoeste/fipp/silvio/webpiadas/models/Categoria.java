@@ -27,9 +27,9 @@ public class Categoria implements Serializable{
         this.nome = nome;
     }
 
-    public Categoria(String nome) {
-        this.nome = nome;
-    }
+//    public Categoria(String nome) {
+//        this.nome = nome;
+//    }
 
     public Categoria() {
         this(0L,"");

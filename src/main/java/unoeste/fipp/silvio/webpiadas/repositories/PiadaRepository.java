@@ -10,9 +10,9 @@ import unoeste.fipp.silvio.webpiadas.models.Piada;
 import java.util.List;
 
 public interface PiadaRepository extends JpaRepository<Piada,Long>{
-    @Query(value = "SELECT * FROM PIADA WHERE pi_titulo LIKE :filter%")
+    @Query(value = "SELECT * FROM PIADA WHERE pi_titulo LIKE :filter%", nativeQuery = true)
     public List<Piada> findWithFilter(@Param("filter") String filter);
 
-    @Query(value = "UPDATE PIADA SET = pi_titulo = :titulo, pi_texto = :texto, pi_keywords = :keywords, cat_id = :cat_id")
+    @Query(value = "UPDATE PIADA SET = pi_titulo = :titulo, pi_texto = :texto, pi_keywords = :keywords, cat_id = :cat_id", nativeQuery = true)
     public Piada editPiada(@Param("titulo") String titulo, @Param("text") String texto, @Param("keywords") String keywords, @Param("cat_id") Long cat_id);
 }

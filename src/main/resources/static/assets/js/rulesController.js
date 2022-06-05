@@ -42,15 +42,18 @@ if(window.location.href.includes("sair.html") && localStorage.getItem("user") !=
     if(localStorage.getItem("user") !== null){
 
         let user = JSON.parse(localStorage.getItem("user"))
-        console.log(user.nivel)
-        if(user.nivel === "USER"){
-            navBar.innerHTML = navBarLogadoUser
-        }else{
-            navBar.innerHTML = navBarLogadoAdmin
-        }
 
+        // tudo que nao for permitido ao usuario fazer sera inserido aqui
         if(window.location.href.includes("login.html") || window.location.href.includes("register.html")){
             window.location.href = "../../index.html"
+        }
+
+        if(user.nivel === "USER"){
+            navBar.innerHTML = navBarLogadoUser
+            if(window.location.href.includes("users.html"))
+                window.location.href = "../../index.html"
+        }else{
+            navBar.innerHTML = navBarLogadoAdmin
         }
     }else{
         navBar.innerHTML = navBarNaoLogado

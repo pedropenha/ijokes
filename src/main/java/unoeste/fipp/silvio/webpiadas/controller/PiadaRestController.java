@@ -20,7 +20,7 @@ public class PiadaRestController {
     
     @GetMapping("/listar-todas-piadas")
     public ResponseEntity <Object> buscarTodas()
-    {   
+    {
         List<Piada> piadas = piadaRepository.findAll();
         return new ResponseEntity<>(piadas,HttpStatus.OK);
     }
