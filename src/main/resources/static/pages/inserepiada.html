@@ -27,13 +27,22 @@
         <div class="container d-flex justify-content-center align-items-center" style="height: 87vh">
             <form method="post" id="formulario" class="w-50 p-5 rounded" style="background-color: rgb(240, 240, 240);">
                 <div>
-    
                     <label for="titulo">Titulo:</label>
                     <input class="form-control" type="text" placeholder="Por que o Portugues não vai no banheiro?" id="titulo" name="titulo" required="required">
                 </div>
+                <div>
+                    <label for="keywords">Palavras chave:</label>
+                    <input class="form-control" type="text" placeholder="Piada, Portugues" id="keywords" name="keywords" required="required">
+                </div>
+                <div>
+                    <label for="categoria">Categoria:</label>
+                    <select class="form-control" id="categoria">
+                        <option value="sla">sla</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="texto">Texto:</label>
-                    <textarea class="form-control" type="text" placeholder="Porque ele nao gosta" id="texto" name="texto"  required="required" rows="3"></textarea>
+                    <textarea class="form-control" type="text" placeholder="Porque ele nao gosta" id="texto" name="texto" required="required" rows="3"></textarea>
                 </div>
                 <div class="row mt-3">
                     <div class="col-sm-12">
