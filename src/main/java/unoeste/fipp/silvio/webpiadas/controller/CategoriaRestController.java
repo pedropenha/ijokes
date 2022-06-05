@@ -20,10 +20,11 @@ public class CategoriaRestController {
     @Autowired
     CategoriaRepository categoriaRepository;
 
-    @GetMapping("/listar-todos")
-    public ResponseEntity <Object> buscarTodos()
+    @GetMapping("/listar-with-filter")
+    public ResponseEntity <Object> buscarTodos(String filtro)
     {
-        List <Categoria> cats = categoriaRepository.findAllWithFilter("l");
+        System.out.println(filtro);
+        List <Categoria> cats = categoriaRepository.findAllWithFilter(filtro);
 
         return new ResponseEntity<>(cats,HttpStatus.CREATED);
     }

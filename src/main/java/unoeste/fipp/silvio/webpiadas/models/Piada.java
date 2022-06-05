@@ -49,6 +49,14 @@ public class Piada implements Serializable
         this.categoria = categoria;
     }
 
+    public Piada(String titulo, String texto, String keywords, int ranking, Categoria categoria) {
+        this.titulo = titulo;
+        this.texto = texto;
+        this.keywords = keywords;
+        this.ranking = ranking;
+        this.categoria = categoria;
+    }
+
     public Long getId() {
         return id;
     }
