@@ -1,14 +1,7 @@
 package unoeste.fipp.silvio.webpiadas.models;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="piada")
@@ -37,25 +30,9 @@ public class Piada implements Serializable
     @JoinColumn(name="cat_id", nullable=false)
     private Categoria categoria;
 
-    public Piada() {
-    }
-
-    public Piada(Long id, String titulo, String texto, String keywords, int ranking, Categoria categoria) {
-        this.id = id;
-        this.titulo = titulo;
-        this.texto = texto;
-        this.keywords = keywords;
-        this.ranking = ranking;
-        this.categoria = categoria;
-    }
-
-    public Piada(String titulo, String texto, String keywords, int ranking, Categoria categoria) {
-        this.titulo = titulo;
-        this.texto = texto;
-        this.keywords = keywords;
-        this.ranking = ranking;
-        this.categoria = categoria;
-    }
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable = false)
+    private Pessoa pessoa;
 
     public Long getId() {
         return id;
@@ -104,7 +81,34 @@ public class Piada implements Serializable
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
 
-    
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
+    }
+
+    public Piada(){
+
+    }
+    public Piada(String titulo, String texto, String keywords, int ranking, Categoria categoria, Pessoa pessoa) {
+        this.titulo = titulo;
+        this.texto = texto;
+        this.keywords = keywords;
+        this.ranking = ranking;
+        this.categoria = categoria;
+        this.pessoa = pessoa;
+    }
+
+    public Piada(Long id, String titulo, String texto, String keywords, int ranking, Categoria categoria, Pessoa pessoa) {
+        this.id = id;
+        this.titulo = titulo;
+        this.texto = texto;
+        this.keywords = keywords;
+        this.ranking = ranking;
+        this.categoria = categoria;
+        this.pessoa = pessoa;
+    }
 }

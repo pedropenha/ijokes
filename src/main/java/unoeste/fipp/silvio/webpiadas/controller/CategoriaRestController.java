@@ -24,10 +24,28 @@ public class CategoriaRestController {
     @GetMapping("/listar-with-filter")
     public ResponseEntity <Object> buscarTodos(String filtro)
     {
-        System.out.println(filtro);
         List <Categoria> cats = categoriaRepository.findAllWithFilter(filtro);
 
-        return new ResponseEntity<>(cats,HttpStatus.CREATED);
+        return new ResponseEntity<>(cats,HttpStatus.OK);
+    }
+
+    @GetMapping("/listar-id-cat")
+    public ResponseEntity <Object> buscarOneId(Long id)
+    {
+        Categoria cats = categoriaRepository.findWithFilterID(id);
+
+        return new ResponseEntity<>(cats,HttpStatus.OK);
+    }
+
+    @GetMapping("/listar-todas-categorias")
+    public ResponseEntity<Object> buscarTodasCategorias(){
+        List <Categoria> cats = categoriaRepository.findAll();
+        System.out.println(cats);
+
+        if(cats.size() == 0)
+            return new ResponseEntity<>(cats, HttpStatus.NOT_FOUND);
+
+        return new ResponseEntity<>(cats, HttpStatus.OK);
     }
 
     @PostMapping("/cadastrar-categoria")
