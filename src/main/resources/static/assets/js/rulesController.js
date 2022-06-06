@@ -48,7 +48,7 @@ if(window.location.href.includes("sair.html") && localStorage.getItem("user") !=
 
         if(user.nivel === "USER"){
             navBar.innerHTML = navBarLogadoUser
-            if(window.location.href.includes("users.html"))
+            if(window.location.href.includes("users.html") || window.location.href.includes("piadasAdmin.html"))
                 window.location.href = "../../index.html"
         }else{
             navBar.innerHTML = navBarLogadoAdmin

@@ -15,7 +15,7 @@ formulario.addEventListener("submit", (e) => {
         data = {
             titulo: document.getElementById("titulo").value,
             texto: document.getElementById("texto").value,
-            keywords: document.getElementById("keywords").value,
+            keywords: document.getElementById("keywords").value.toLowerCase(),
             ranking: 0,
             categoria: JSON.parse(text),
             pessoa: JSON.parse(localStorage.getItem("user"))
