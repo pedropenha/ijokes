@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import unoeste.fipp.silvio.webpiadas.models.Categoria;
 import unoeste.fipp.silvio.webpiadas.repositories.CategoriaRepository;
@@ -49,7 +46,7 @@ public class CategoriaRestController {
     }
 
     @PostMapping("/cadastrar-categoria")
-    public ResponseEntity<Object> cadastrarCategoria(Categoria categorias)
+    public ResponseEntity<Object> cadastrarCategoria(@RequestBody Categoria categorias)
     {
         Categoria categoria = categoriaRepository.save(categorias);
         return new ResponseEntity<>(categoria, HttpStatus.OK);

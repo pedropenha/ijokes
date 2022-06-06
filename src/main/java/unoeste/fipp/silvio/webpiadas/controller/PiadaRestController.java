@@ -1,5 +1,6 @@
 package unoeste.fipp.silvio.webpiadas.controller;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class PiadaRestController {
     @GetMapping("/listar-todas-piadas")
     public ResponseEntity <Object> buscarTodas()
     {
-        List<Piada> piadas = piadaRepository.findAll();
+        List<Piada> piadas = piadaRepository.findWithFilter("");
         return new ResponseEntity<>(piadas,HttpStatus.OK);
     }
 
@@ -43,6 +44,13 @@ public class PiadaRestController {
         return new ResponseEntity<>(piadas,HttpStatus.OK);
     }
 
+    @GetMapping("/listar-piadas-usuario")
+    public ResponseEntity<Object> buscarPiadaUsuario(String id)
+    {
+        List<Piada> piadas = piadaRepository.findWithId(Long.parseLong(id));
+        return new ResponseEntity<>(piadas, HttpStatus.OK);
+    }
+
     @PostMapping("/listar-piadas-categoria")
     public ResponseEntity<Object> buscarPiadasCategoria(@RequestBody Categoria categoria){
         return new ResponseEntity<>(piadaRepository.findWithCat(categoria.getId()), HttpStatus.OK);
@@ -54,17 +62,11 @@ public class PiadaRestController {
         return new ResponseEntity<>(piadaRepository.save(piadas), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete-piada")
-    public ResponseEntity<Object> deletePiada(@RequestBody Piada piadas)
+    @GetMapping("/delete-piada")
+    public ResponseEntity<Object> deletePiada(String id)
     {
-        piadaRepository.deleteById(piadas.getId());
+        Piada piadas = piadaRepository.findByIdPiada(Long.parseLong(id));
+        piadaRepository.delete(piadas);
         return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @PutMapping("/edit-piada")
-    public ResponseEntity<Object> editPiada(@RequestBody Piada piadas)
-    {
-        Piada piada = piadaRepository.save(piadas);
-        return new ResponseEntity<>(piada, HttpStatus.OK);
     }
 }
